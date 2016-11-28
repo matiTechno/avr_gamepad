@@ -111,7 +111,7 @@ int main()
 	}
 }
 
-ISR(TIMER1_COMPA_vect, ISR_NOBLOCK)
+ISR(TIMER1_COMPA_vect)
 {
 	if(connectionT)
 		if(!--connectionT)
