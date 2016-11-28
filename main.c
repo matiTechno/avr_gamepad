@@ -114,17 +114,12 @@ int main()
 ISR(TIMER1_COMPA_vect, ISR_NOBLOCK)
 {
 	if(connectionT)
-	{
-		--connectionT;
-		if(!connectionT)
+		if(!--connectionT)
 			PORTB &= ~CONNECTION_LED;
-	}
+
 	if(effectT)
-	{
-		--effectT;
-		if(!effectT)
+		if(!--effectT)
 			PORTD &= ~EFFECT;
-	}
 }
 
 ISR(USART_RX_vect)
