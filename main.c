@@ -111,7 +111,7 @@ int main()
 	}
 }
 
-ISR(TIMER1_COMPA_vect)
+ISR(TIMER1_COMPA_vect, ISR_NOBLOCK)
 {
 	if(connectionT)
 		if(!--connectionT)
@@ -127,14 +127,13 @@ ISR(USART_RX_vect)
 	char dummy = UDR0;
 	if(dummy == 'C')
 	{
-		if(!connectionT)
-			PORTB |= CONNECTION_LED;
+		PORTB |= CONNECTION_LED;
 		connectionT = 10;
 	}
 	else if(dummy == 'S')
 	{
-		if(!effectT)
-			PORTD |= EFFECT;
+
+		PORTD |= EFFECT;
 		effectT = 10;
 	}
 }
